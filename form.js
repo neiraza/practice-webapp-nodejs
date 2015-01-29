@@ -71,8 +71,9 @@ function upload(req, res) {
   }
 
   var form = new formidable.IncomingForm();
-  form.on('progress', function(bytesReceived,  bytesExpected) {
-    var percent = Math.floor(bytesReceived, 
+  form.on('progress', function(bytesReceived, bytesExpected) {
+    var percent = Math.floor(bytesReceived / bytesExpected * 100);
+    console.log(percent);
   });
   form.on('field', function(field, value) {
     console.log(field);
